@@ -1,8 +1,25 @@
 package by.bsuir.mark.task.fourth.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "pillMedicine", propOrder = {"totalPills", "isCapsule"})
 public class PillMedicine extends Medicine {
-    private int totalPills;
-    private boolean isCapsule;
+    @XmlElement(name = "total-pills", required = true)
+    protected int totalPills;
+    @XmlElement(name = "is-capsule", required = true)
+    protected boolean isCapsule;
+
+    public PillMedicine() {}
+
+    public PillMedicine(String name, Group group, int price, Manufacturer manufacturer, int totalPills, boolean isCapsule) {
+        super(name, group, price, manufacturer);
+        this.totalPills = totalPills;
+        this.isCapsule = isCapsule;
+    }
 
     public int getTotalPills() {
         return totalPills;

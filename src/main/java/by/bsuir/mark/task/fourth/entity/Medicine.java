@@ -1,10 +1,31 @@
 package by.bsuir.mark.task.fourth.entity;
 
+import javax.xml.bind.annotation.*;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "medicineType")
+@XmlSeeAlso({
+        LiquidMedicine.class,
+        PillMedicine.class
+})
 public class Medicine {
-    private String name;
-    private Group group;
-    private int price;
-    private Manufacturer manufacturer;
+    @XmlElement(name = "name", required = true)
+    protected String name;
+    @XmlAttribute(name = "group")
+    protected Group group;
+    @XmlElement(name = "price", required = true)
+    protected int price;
+    @XmlElement(name = "manufacturer", required = true)
+    protected Manufacturer manufacturer;
+
+    public Medicine() {}
+
+    public Medicine(String name, Group group, int price, Manufacturer manufacturer) {
+        this.name = name;
+        this.group = group;
+        this.price = price;
+        this.manufacturer = manufacturer;
+    }
 
     public String getName() {
         return name;

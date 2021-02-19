@@ -87,8 +87,8 @@
         <cns:complexContent>
             <cns:extension base="medicineType">
                 <cns:sequence>
-                    <cns:element name="totalPills" type="medPills"/>
-                    <cns:element name="isCapsule" type="cns:boolean"/>
+                    <cns:element name="total-pills" type="medPills"/>
+                    <cns:element name="is-capsule" type="cns:boolean"/>
                 </cns:sequence>
             </cns:extension>
         </cns:complexContent>
@@ -102,7 +102,7 @@
     </cns:simpleType>
 
     <cns:element name="medicine" type="medicineType"/>
-    <cns:element name="liquid.medicine" type="liquidMedicine" substitutionGroup="medicine"/>
-    <cns:element name="pill.medicine" type="pillMedicine" substitutionGroup="medicine"/>
+    <cns:element name="liquid-medicine" type="liquidMedicine" substitutionGroup="medicine"/>
+    <cns:element name="pill-medicine" type="pillMedicine" substitutionGroup="medicine"/>
 
 </cns:schema>

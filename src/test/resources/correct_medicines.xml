@@ -4,7 +4,6 @@
         xsi:schemaLocation="http://www.w3.org/2001/XMLSchema-instance
         medicines_xsd_schema.xml"
 >
-
     <medicine name="CoolPills" group="BAA">
         <price>100</price>
         <manufacturer>
@@ -21,42 +20,42 @@
         </manufacturer>
     </medicine>
 
-    <liquid.medicine name="LiquidMed">
+    <liquid-medicine name="LiquidMed">
         <price>23442</price>
         <manufacturer>
             <name>Mark Corp</name>
             <zip>231103</zip>
         </manufacturer>
         <volume>999</volume>
-    </liquid.medicine>
+    </liquid-medicine>
 
-    <liquid.medicine name="LiquidMedExtra" group="PAINKILLERS">
+    <liquid-medicine name="LiquidMedExtra" group="PAINKILLERS">
         <price>55</price>
         <manufacturer>
             <name>MarkCorporative</name>
             <zip>202022</zip>
         </manufacturer>
         <volume>500</volume>
-    </liquid.medicine>
+    </liquid-medicine>
 
-    <pill.medicine name="PillMed">
+    <pill-medicine name="PillMed">
         <price>1337</price>
         <manufacturer>
             <name>Markysha Corp</name>
             <zip>233223</zip>
         </manufacturer>
-        <totalPills>20</totalPills>
-        <isCapsule>true</isCapsule>
-    </pill.medicine>
+        <total-pills>20</total-pills>
+        <is-capsule>true</is-capsule>
+    </pill-medicine>
 
-    <pill.medicine name="PillMedLovely" group="ANTIBIOTICS">
+    <pill-medicine name="PillMedLovely" group="ANTIBIOTICS">
         <price>4044</price>
         <manufacturer>
             <name>Pharmacy Land</name>
             <zip>727190</zip>
         </manufacturer>
-        <totalPills>50</totalPills>
-        <isCapsule>false</isCapsule>
-    </pill.medicine>
+        <total-pills>50</total-pills>
+        <is-capsule>false</is-capsule>
+    </pill-medicine>
 
 </medicines>

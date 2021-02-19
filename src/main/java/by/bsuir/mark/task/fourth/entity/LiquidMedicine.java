@@ -1,7 +1,23 @@
 package by.bsuir.mark.task.fourth.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "liquidMedicine", propOrder = {"volume"})
 public class LiquidMedicine extends Medicine {
-    private int volume;
+
+    @XmlElement(name = "volume", required = true)
+    protected int volume;
+
+    public LiquidMedicine() {}
+
+    public LiquidMedicine(String name, Group group, int price, Manufacturer manufacturer, int volume) {
+        super(name, group, price, manufacturer);
+        this.volume = volume;
+    }
 
     public int getVolume() {
         return volume;

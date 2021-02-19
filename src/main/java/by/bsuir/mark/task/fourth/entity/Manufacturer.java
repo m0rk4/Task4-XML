@@ -1,8 +1,24 @@
 package by.bsuir.mark.task.fourth.entity;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "medManufacturer")
 public class Manufacturer {
-    private String name;
-    private String zip;
+    @XmlElement(name = "name", required = true)
+    protected String name;
+    @XmlElement(name = "zip", required = true)
+    protected String zip;
+
+    public Manufacturer() {}
+
+    public Manufacturer(String name, String zip) {
+        this.name = name;
+        this.zip = zip;
+    }
 
     public String getName() {
         return name;
