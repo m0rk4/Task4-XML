@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cns:schema
+        elementFormDefault="qualified"
+        xmlns:cns="http://www.w3.org/2001/XMLSchema">
+
+    <cns:element name="medicines">
+        <cns:complexType>
+            <cns:sequence>
+                <cns:element
+                        ref="medicine"
+                        minOccurs="0"
+                        maxOccurs="unbounded"
+                />
+            </cns:sequence>
+        </cns:complexType>
+    </cns:element>
+
+    <cns:complexType name="medicineType">
+        <cns:sequence>
+            <cns:element name="price" type="measuredPrice"/>
+            <cns:element name="manufacturer" type="medManufacturer"/>
+        </cns:sequence>
+        <cns:attribute name="name" use="required">
+            <cns:simpleType>
+                <cns:restriction base="cns:ID">
+                    <cns:pattern value="[A-Za-z ]{5,20}"/>
+                </cns:restriction>
+            </cns:simpleType>
+        </cns:attribute>
+        <cns:attribute name="group" default="OTHER">
+            <cns:simpleType>
+                <cns:restriction base="cns:string">
+                    <cns:enumeration value="BAA"/>
+                    <cns:enumeration value="ANTIBIOTICS"/>
+                    <cns:enumeration value="PAINKILLERS"/>
+                    <cns:enumeration value="VITAMINS"/>
+                    <cns:enumeration value="OTHER"/>
+                </cns:restriction>
+            </cns:simpleType>
+        </cns:attribute>
+    </cns:complexType>
+
+    <cns:complexType name="medManufacturer">
+        <cns:sequence>
+            <cns:element name="name" type="uniqueManName"/>
+            <cns:element name="zip" type="zipName"/>
+        </cns:sequence>
+    </cns:complexType>
+
+    <cns:simpleType name="measuredPrice">
+        <cns:restriction base="cns:integer">
+            <cns:minInclusive value="0"/>
+            <cns:maxInclusive value="1000000"/>
+        </cns:restriction>
+    </cns:simpleType>
+
+    <cns:simpleType name="uniqueManName">
+        <cns:restriction base="cns:string">
+            <cns:pattern value="[A-Za-z ]{5,15}"/>
+        </cns:restriction>
+    </cns:simpleType>
+
+    <cns:simpleType name="zipName">
+        <cns:restriction base="cns:string">
+            <cns:pattern value="[0-9]{6}"/>
+        </cns:restriction>
+    </cns:simpleType>
+
+    <cns:complexType name="liquidMedicine">
+        <cns:complexContent>
+            <cns:extension base="medicineType">
+                <cns:sequence>
+                    <cns:element name="volume" type="medVolume" />
+                </cns:sequence>
+            </cns:extension>
+        </cns:complexContent>
+    </cns:complexType>
+
+    <cns:simpleType name="medVolume">
+        <cns:restriction base="cns:integer">
+            <cns:minInclusive value="0"/>
+            <cns:maxInclusive value="1000"/>
+        </cns:restriction>
+    </cns:simpleType>
+
+    <cns:complexType name="pillMedicine">
+        <cns:complexContent>
+            <cns:extension base="medicineType">
+                <cns:sequence>
+                    <cns:element name="total-pills" type="medPills"/>
+                    <cns:element name="is-capsule" type="cns:boolean"/>
+                </cns:sequence>
+            </cns:extension>
+        </cns:complexContent>
+    </cns:complexType>
+
+    <cns:simpleType name="medPills">
+        <cns:restriction base="cns:integer">
+            <cns:minInclusive value="0"/>
+            <cns:maxInclusive value="100"/>
+        </cns:restriction>
+    </cns:simpleType>
+
+    <cns:element name="medicine" type="medicineType"/>
+    <cns:element name="liquid-medicine" type="liquidMedicine" substitutionGroup="medicine"/>
+    <cns:element name="pill-medicine" type="pillMedicine" substitutionGroup="medicine"/>
+
+</cns:schema>
